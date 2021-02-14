@@ -3,8 +3,11 @@ const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
     name: String,
-    done: { type: Boolean, default: false },
-    owner: {
+    done: {
+        type: Boolean,
+        default: false
+    },
+    user: {
         type: Schema.Types.ObjectId,
         ref: "User",
     }

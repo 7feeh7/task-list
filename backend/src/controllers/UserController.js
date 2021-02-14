@@ -5,11 +5,11 @@ const User = require('../models/User');
 module.exports = {
     async index(req, res) {
         const users = await User.find();
-        
+
         return res.json(users);
     },
 
-    async store(req, res) {
+    async create(req, res) {
         let { name, email, password } = req.body;
 
         let user = await User.findOne({ email });
@@ -19,5 +19,12 @@ module.exports = {
         }
 
         return res.json({ success: true, data: user });
+    },
+
+    async taskByUser(req, res) {
+        const { id } = req.params;
+        const user = await User.findById(id).populate('tasks');
+
+        return res.json({ success: true, data: user.tasks });
     }
 };

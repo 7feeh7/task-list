@@ -15,4 +15,4 @@ mongoose.connect(process.env.DB_URL, {
 app.use(express.json());
 app.use(routes);
 
-app.listen(PORT);
+app.listen(PORT, () => console.log('server up!'));
